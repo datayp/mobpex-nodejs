@@ -1,0 +1,18 @@
+{
+  "name": "mobpexsdk",
+  "version": "1.0.0",
+  "description": "the mobpex sdk ",
+  "main": "Client.js",
+  "scripts": {
+    "test": "node demo.js"
+  },
+  "keywords": [
+    "mobpex",
+    "client"
+  ],
+  "author": "genshen.hu",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.70.0"
+  }
+}
