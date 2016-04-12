@@ -7,7 +7,7 @@
 
 1. docs 目录下为 Mobpex Nodejs SDK 的使用文档。
 2. example 目录下面为调用示例。
-3. libs 为 Mobpex Nodejs SDK 。
+3. mobpexNodejsSDK 目录下为  SDK源文件 。
 
 ### 版本要求
 
@@ -17,7 +17,7 @@
 
 下载源码后，在目录下运行 `npm install`
 
-调用示例请参考demo.js
+调用示例请参考example/demo.js
 
 
 
