@@ -27,7 +27,7 @@ params={
   liveMode:'true'
 };
 client.request("/rest/v1.0/query/findChannelInfoByAppId",params,function (error,response) {     
-     if(!error &&response.statusCode==200){
+             if(!error){
                 var content=response.body;
                 //验证签名
                 var flag=client.certifyResponse(content);
@@ -41,15 +41,13 @@ client.request("/rest/v1.0/query/findChannelInfoByAppId",params,function (error,
                      } 
                  }
               else{
-              console.log("error: "+error+" statusCode: "+response.statusCode);
+                  console.log(error);
                      }
               });
      
-
-
 /**
 预支付请求
-
+*/
   var  prePayRequest={
       //商户系统的支付请求流水号
       "tradeNo":"834153959835644",   
@@ -74,7 +72,7 @@ client.request("/rest/v1.0/query/findChannelInfoByAppId",params,function (error,
              };      
   client.request("/rest/v1.0/pay/unifiedOrder",
       params,function (error,response) {
-            if(!error &&response.statusCode==200){
+            if(!error){
                 var content=response.body;
                 //验证签名
                 var flag=client.certifyResponse(content);
@@ -88,14 +86,14 @@ client.request("/rest/v1.0/query/findChannelInfoByAppId",params,function (error,
                      } 
                  }
               else{
-              console.log("error: "+error+" statusCode: "+response.statusCode);
+                  console.log(error);
                      }
               });
-*/
+
 
 /**
 退款请求
-
+*/
 var refundRequest={
       //商户系统支付请求流水
       "tradeNo":"834153959836",
@@ -120,12 +118,11 @@ var refundParams={
   "liveMode":'true'
 };
 client.request("/rest/v1.0/pay/refund",refundParams,function (error,response) {
-                  if(!error&&response.statusCode==200){
-                     var content=response.body;
-                     //验证签名
-                     var flag=client.certifyResponse(content);
-                     if(flag)
-                     {
+                  if(!error){
+                var content=response.body;
+                //验证签名
+                var flag=client.certifyResponse(content);
+                if(flag){
                       console.log("签名验证成功！");
                       console.log(response.body);
                      }
@@ -134,14 +131,14 @@ client.request("/rest/v1.0/pay/refund",refundParams,function (error,response) {
                       console.log(response.body);
                      } 
                  }
-                  else{
-                    console.log("error: "+error+" statusCode: "+response.statusCode);
+              else{
+                  console.log(error);
                      }
               });
-*/
+
 /**
  退款查询请求
-
+*/
 
 var queryFundParamas={
 //商户订单编号，和发起支付请求中的requestFlowId一致
@@ -152,12 +149,11 @@ var queryFundParamas={
 "liveMode":'true'
 };
 client.request("/rest/v1.0/pay/queryRefundOrder",queryFundParamas,function (error,response) {
-                 if(!error&&response.statusCode==200){
-                     var content=response.body;
-                     //验证签名
-                     var flag=client.certifyResponse(content);
-                     if(flag)
-                     {
+                if(!error){
+                var content=response.body;
+                //验证签名
+                var flag=client.certifyResponse(content);
+                if(flag){
                       console.log("签名验证成功！");
                       console.log(response.body);
                      }
@@ -166,15 +162,15 @@ client.request("/rest/v1.0/pay/queryRefundOrder",queryFundParamas,function (erro
                       console.log(response.body);
                      } 
                  }
-                  else{
-                    console.log("error: "+error+" statusCode: "+response.statusCode);
+              else{
+                  console.log(error);
                      }
               });
-*/
+
 
 /**
 支付查询请求
-
+*/
 
 //请求参数
 var params={
@@ -184,12 +180,11 @@ var params={
   liveMode:'true'
 }; 
 client.request("/rest/v1.0/pay/queryPaymentOrder",params,function (error,response) {
-                if(!error&&response.statusCode==200){
-                     var content=response.body;
-                     //验证签名
-                     var flag=client.certifyResponse(content);
-                     if(flag)
-                     {
+                if(!error){
+                var content=response.body;
+                //验证签名
+                var flag=client.certifyResponse(content);
+                if(flag){
                       console.log("签名验证成功！");
                       console.log(response.body);
                      }
@@ -198,8 +193,8 @@ client.request("/rest/v1.0/pay/queryPaymentOrder",params,function (error,respons
                       console.log(response.body);
                      } 
                  }
-                  else{
-                    console.log("error: "+error+" statusCode: "+response.statusCode);
+              else{
+                  console.log(error);
                      }
               });
-*/
+

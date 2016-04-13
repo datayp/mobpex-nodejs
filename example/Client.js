@@ -60,6 +60,7 @@ Client.prototype.sign = function (params) {
  * @public
  */
 Client.prototype.request = function (method,params,callback) {
+ try{ 
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     var args = {
         "appId": this.appId,
@@ -89,9 +90,25 @@ Client.prototype.request = function (method,params,callback) {
     method: 'post',
     form: args,//post的数据
     headers: {  "Content-Type":"application/x-www-form-urlencoded;charset=utf-8",
-                "Cache-Control": "no-cache",
-                "Connection": "Keep-Alive"}
-    },callback);
+                "Cache-Control": "no-cache"},
+    timeout:30000
+    },function(error,response){
+      if(!error &&response.statusCode==200)
+      {
+       callback(null,response);
+      }
+      else{
+          if(null!=response&&null!=response.statusCode){
+            var err="statusCode is "+response.statusCode;
+            callback(err,response);
+          }
+          else{
+            throw new Error('请求错误!');
+          }  
+      }});
+}catch(ex){
+   throw ex;
+}
 };
 
 
