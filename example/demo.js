@@ -23,8 +23,6 @@ var client = new Client({
 
 //查询参数
 params={
-  //是否生产模式
-  liveMode:'true'
 };
 client.request("/rest/v1.0/query/findChannelInfoByAppId",params,function (error,response) {     
              if(!error){
@@ -64,9 +62,7 @@ client.request("/rest/v1.0/query/findChannelInfoByAppId",params,function (error,
                  };
     //请求参数
   var params={
-    "prePayRequest":prePayRequest,
-    //是否生产模式
-    "liveMode":'true'
+    "prePayRequest":prePayRequest
              };      
   client.request("/rest/v1.0/pay/unifiedOrder",
       params,function (error,response) {
@@ -103,9 +99,7 @@ var refundRequest={
       "description":"我要退款~~~",
     };
 var refundParams={
-  "refundRequest":refundRequest,
-  //是否生产模式
-  "liveMode":'true'
+  "refundRequest":refundRequest
 };
 client.request("/rest/v1.0/pay/refund",refundParams,function (error,response) {
                   if(!error){
@@ -134,9 +128,7 @@ var queryFundParamas={
 //商户订单编号，和发起支付请求中的requestFlowId一致
 "tradeNo":"656113769613",
 //商户退款流水
-"refundNo":"20485228279",
-//是否生产模式
-"liveMode":'true'
+"refundNo":"20485228279"
 };
 client.request("/rest/v1.0/pay/queryRefundOrder",queryFundParamas,function (error,response) {
                 if(!error){
@@ -165,9 +157,7 @@ client.request("/rest/v1.0/pay/queryRefundOrder",queryFundParamas,function (erro
 //请求参数
 var params={
   //商户支付请求流水号
-  tradeNo:"834153959835644",
-  //是否生产模式,必填
-  liveMode:'true'
+  tradeNo:"834153959835644" 
 }; 
 client.request("/rest/v1.0/pay/queryPaymentOrder",params,function (error,response) {
                 if(!error){
